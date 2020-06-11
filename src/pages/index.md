@@ -3,7 +3,7 @@ templateKey: index-page
 title: Pratyush Ravishankar
 image: /img/code-jumbo.jpg
 heading: Great coffee with a conscience
-subheading: Support sustainable farming while enjoying a cup
+subheading: UNDER DEVELOPMENT
 mainpitch:
   title: Why Kaldi
   description: >
