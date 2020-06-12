@@ -1,12 +1,11 @@
 ---
 templateKey: project
-title: PLM - parser & interpreter
+title: ricksretro.py
 date: 2020-06-11T15:04:10.000Z
 featuredpost: false
 featuredimage: /img/chemex.jpg
 description: >-
-  We’re proud to announce that we’ll be offering a small batch of Jamaica Blue
-  Mountain coffee beans in our store next week.
+    Created a python script to notify when a clothing drop occurs on vintage clothing website ricksretro.co.uk
 tags:
   - youtube
 ---

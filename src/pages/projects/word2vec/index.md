@@ -1,6 +1,6 @@
 ---
 templateKey: project
-title: PLM - parser & interpreter
+title: word2vec article (in progress)
 date: 2020-06-11T15:04:10.000Z
 featuredpost: false
 featuredimage: /img/chemex.jpg
