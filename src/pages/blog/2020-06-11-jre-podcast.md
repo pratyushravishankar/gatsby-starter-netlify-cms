@@ -12,6 +12,8 @@ tags:
 ---
 ![podcast](/img/220px-The_Joe_Rogan_Experience_logo.jpg)
 
+Whether you like Rogan as a podcaster, the quality of the guest alone make him well worth the listen. 
+
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi posuere a mi non scelerisque. Phasellus consectetur non enim vitae convallis. Vestibulum ac ligula suscipit, dapibus sapien eu, bibendum felis. Nullam imperdiet lobortis risus vitae sodales. Integer scelerisque maximus erat, eu faucibus turpis vestibulum eget. Aenean malesuada ullamcorper nunc, in faucibus orci vehicula sit amet. Donec nec ligula felis. Nulla facilisi. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam iaculis nisl quis mollis pretium. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut nunc sem, ullamcorper a risus nec, vehicula vestibulum nunc. Nullam ut condimentum urna. Phasellus malesuada sollicitudin maximus.
 
 
