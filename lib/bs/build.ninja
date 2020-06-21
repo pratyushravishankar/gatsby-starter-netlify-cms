@@ -1,7 +1,7 @@
 g_pkg_flg = -bs-package-name gatsby-starter-netlify-cms -bs-ns GatsbyStarterNetlifyCms
 src_root_dir = /Users/pratyush/Documents/misc/gatsby-starter-netlify-cms
-bsc = /Users/pratyush/.config/yarn/global/node_modules/bs-platform/darwin/bsc.exe
-bsdep = /Users/pratyush/.config/yarn/global/node_modules/bs-platform/darwin/bsb_helper.exe
+bsc = /Users/pratyush/Documents/misc/gatsby-starter-netlify-cms/node_modules/bs-platform/darwin/bsc.exe
+bsdep = /Users/pratyush/Documents/misc/gatsby-starter-netlify-cms/node_modules/bs-platform/darwin/bsb_helper.exe
 warnings = 
 bsc_flags = 
 ppx_flags = 
