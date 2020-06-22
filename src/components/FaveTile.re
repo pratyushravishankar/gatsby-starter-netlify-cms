@@ -1,14 +1,19 @@
 module Link = Gatsby.Link;
 
-module MyBanner = {
-  [@bs.module "./MyBanner.js"] [@react.component]
-  external make: (~message: string) => React.element = "default";
+type imageInfoString = {
+  image: bool,
+  alt: string,
 };
 
-// module PreviewCompatibleImage = {
+// module MyBanner = {
 //   [@bs.module "./MyBanner.js"] [@react.component]
-//   external make: (~childImageSharp : object, ~style : object) => React.element = "default";
-// }
+//   external make: (~imageInfo: imageInfoString) => React.element = "default";
+// };
+
+module PreviewCompatibleImage = {
+  [@bs.module "./PreviewCompatibleImage.js"] [@react.component]
+  external make: (~imageInfo: imageInfoString) => React.element = "default";
+};
 
 // module MyBanner = {
 //   [@react.component] [@bs.module]
@@ -59,6 +64,16 @@ let make = (~post) => {
   let renderImageJsx = () => {
     <div>
       <header>
+        {post##frontmatter##featuredimage
+           ? <div className="featured-thumbnail">
+               <PreviewCompatibleImage
+                 imageInfo={
+                   image: post##frontmatter##featuredimage,
+                   alt: "featured image thumbnail for post ${post##frontmatter##title}",
+                 }
+               />
+             </div>
+           : <div />}
         <p className="post-meta">
           <Link
             className="title has-text-primary is-size-4"
@@ -70,16 +85,6 @@ let make = (~post) => {
           </span>
         </p>
       </header>
-      // ) : null}
-      //   </div>
-      //     />
-      //       }}
-      //         alt: "featured image thumbnail for post ${props.post.frontmatter.title}",
-      //         image: post##frontmatter##featuredimage,
-      //       imageInfo={{
-      //     <PreviewCompatibleImage
-      //   <div className="featured-thumbnail">
-      // {post##frontmatter##featuredimage ? (
       // <MyBanner message="lol" />
       <p>
         {post##excerpt}

@@ -4,11 +4,11 @@
 var Curry = require("bs-platform/lib/js/curry.js");
 var React = require("react");
 var GatsbyLink = require("gatsby-link");
-var MyBannerJs = require("./MyBanner.js");
+var PreviewCompatibleImageJs = require("./PreviewCompatibleImage.js");
 
-var make = MyBannerJs.default;
+var make = PreviewCompatibleImageJs.default;
 
-var MyBanner = {
+var PreviewCompatibleImage = {
   make: make
 };
 
@@ -19,7 +19,14 @@ function FaveTile(Props) {
         }));
   var setTileState = match[1];
   var renderImageJsx = function (param) {
-    return React.createElement("div", undefined, React.createElement("header", undefined, React.createElement("p", {
+    return React.createElement("div", undefined, React.createElement("header", undefined, post.frontmatter.featuredimage ? React.createElement("div", {
+                          className: "featured-thumbnail"
+                        }, React.createElement(make, {
+                              imageInfo: {
+                                image: post.frontmatter.featuredimage,
+                                alt: "featured image thumbnail for post ${post##frontmatter##title}"
+                              }
+                            })) : React.createElement("div", undefined), React.createElement("p", {
                         className: "post-meta"
                       }, React.createElement(GatsbyLink.default, {
                             to: post.fields.slug,
@@ -60,7 +67,7 @@ var make$1 = FaveTile;
 var $$default = FaveTile;
 
 exports.Link = Link;
-exports.MyBanner = MyBanner;
+exports.PreviewCompatibleImage = PreviewCompatibleImage;
 exports.make = make$1;
 exports.$$default = $$default;
 exports.default = $$default;
