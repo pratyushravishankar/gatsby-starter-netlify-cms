@@ -4,12 +4,19 @@
 var Curry = require("bs-platform/lib/js/curry.js");
 var React = require("react");
 var GatsbyLink = require("gatsby-link");
+var MyBannerJs = require("./MyBanner.js");
 var PreviewCompatibleImageJs = require("./PreviewCompatibleImage.js");
 
-var make = PreviewCompatibleImageJs.default;
+var make = MyBannerJs.default;
+
+var MyBanner = {
+  make: make
+};
+
+var make$1 = PreviewCompatibleImageJs.default;
 
 var PreviewCompatibleImage = {
-  make: make
+  make: make$1
 };
 
 function FaveTile(Props) {
@@ -18,15 +25,16 @@ function FaveTile(Props) {
           return /* Image */1;
         }));
   var setTileState = match[1];
+  var possNullImg = post.frontmatter.featuredimage;
   var renderImageJsx = function (param) {
-    return React.createElement("div", undefined, React.createElement("header", undefined, post.frontmatter.featuredimage ? React.createElement("div", {
+    return React.createElement("div", undefined, React.createElement("header", undefined, (possNullImg == null) ? null : React.createElement("div", {
                           className: "featured-thumbnail"
-                        }, React.createElement(make, {
+                        }, React.createElement(make$1, {
                               imageInfo: {
-                                image: post.frontmatter.featuredimage,
+                                image: possNullImg,
                                 alt: "featured image thumbnail for post ${post##frontmatter##title}"
                               }
-                            })) : React.createElement("div", undefined), React.createElement("p", {
+                            })), React.createElement("p", {
                         className: "post-meta"
                       }, React.createElement(GatsbyLink.default, {
                             to: post.fields.slug,
@@ -62,13 +70,14 @@ function FaveTile(Props) {
 
 var Link;
 
-var make$1 = FaveTile;
+var make$2 = FaveTile;
 
 var $$default = FaveTile;
 
 exports.Link = Link;
+exports.MyBanner = MyBanner;
 exports.PreviewCompatibleImage = PreviewCompatibleImage;
-exports.make = make$1;
+exports.make = make$2;
 exports.$$default = $$default;
 exports.default = $$default;
 exports.__esModule = true;

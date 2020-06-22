@@ -1,14 +1,14 @@
 module Link = Gatsby.Link;
 
 type imageInfoString = {
-  image: bool,
+  image: option(string),
   alt: string,
 };
 
-// module MyBanner = {
-//   [@bs.module "./MyBanner.js"] [@react.component]
-//   external make: (~imageInfo: imageInfoString) => React.element = "default";
-// };
+module MyBanner = {
+  [@bs.module "./MyBanner.js"] [@react.component]
+  external make: (~message: string) => React.element = "default";
+};
 
 module PreviewCompatibleImage = {
   [@bs.module "./PreviewCompatibleImage.js"] [@react.component]
@@ -61,19 +61,38 @@ type tileState =
 [@react.component]
 let make = (~post) => {
   let (tileState, setTileState) = React.useState(_ => Image);
+  // let renderFeatImage = (possiblyNullImage) => {
+  //   let featImage = Js.Nullable.toOption(possiblyNullImage);
+  //   switch (featImage) {
+  //   | None => React.null
+  //   | Some(fImg) => {
+  //     <div className="featured-thumbnail">
+  //         <PreviewCompatibleImage
+  //           imageInfo={
+  //             image: post##frontmatter##featuredimage,
+  //             alt: "featured image thumbnail for post ${post##frontmatter##title}",
+  //           }
+  //         />
+  //       </div>
+  //   }}
+  // }
+  let possNullImg = Js.Nullable.toOption(post##frontmatter##featuredimage);
   let renderImageJsx = () => {
     <div>
       <header>
-        {post##frontmatter##featuredimage
-           ? <div className="featured-thumbnail">
-               <PreviewCompatibleImage
-                 imageInfo={
-                   image: post##frontmatter##featuredimage,
-                   alt: "featured image thumbnail for post ${post##frontmatter##title}",
-                 }
-               />
-             </div>
-           : <div />}
+        {switch (possNullImg) {
+         | None => React.null
+         | Some(img) =>
+           <div className="featured-thumbnail">
+             <PreviewCompatibleImage
+               imageInfo={
+                 image: img,
+                 alt: "featured image thumbnail for post ${post##frontmatter##title}",
+               }
+             />
+           </div>
+         }}
+        // renderFeatImage(post##frontmatter##featuredimage);
         <p className="post-meta">
           <Link
             className="title has-text-primary is-size-4"
