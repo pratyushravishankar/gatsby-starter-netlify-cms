@@ -20,6 +20,16 @@ function FaveTile(Props) {
   var setTileState = match[1];
   var possNullImg = post.frontmatter.featuredimage;
   var renderImageJsx = function (param) {
+    return React.createElement("div", undefined, (possNullImg == null) ? null : React.createElement("div", {
+                      className: "featured-thumbnail"
+                    }, React.createElement(make, {
+                          imageInfo: {
+                            image: possNullImg,
+                            alt: "featured image thumbnail for post ${post##frontmatter##title}"
+                          }
+                        })));
+  };
+  var renderWordsJsx = function (param) {
     return React.createElement("div", undefined, React.createElement("header", undefined, (possNullImg == null) ? null : React.createElement("div", {
                           className: "featured-thumbnail"
                         }, React.createElement(make, {
@@ -33,16 +43,13 @@ function FaveTile(Props) {
                             to: post.fields.slug,
                             className: "title has-text-primary is-size-4",
                             children: post.frontmatter.title
-                          }), React.createElement("span", {
+                          }), React.createElement("span", undefined), React.createElement("span", {
                             className: "subtitle is-size-5 is-block"
                           }, post.frontmatter.date))), React.createElement("p", undefined, post.excerpt, React.createElement("br", undefined), React.createElement("br", undefined), React.createElement(GatsbyLink.default, {
                         to: post.fields.slug,
                         className: "button",
                         children: "Keep Reading"
                       })));
-  };
-  var renderWordsJsx = function (param) {
-    return React.createElement("div", undefined, "help");
   };
   return React.createElement("div", {
               className: "is-parent column is-6"

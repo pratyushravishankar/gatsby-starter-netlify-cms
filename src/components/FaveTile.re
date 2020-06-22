@@ -21,6 +21,22 @@ let make = (~post) => {
   let possNullImg = Js.Nullable.toOption(post##frontmatter##featuredimage);
   let renderImageJsx = () => {
     <div>
+      {switch (possNullImg) {
+       | None => React.null
+       | Some(img) =>
+         <div className="featured-thumbnail">
+           <PreviewCompatibleImage
+             imageInfo={
+               image: img,
+               alt: "featured image thumbnail for post ${post##frontmatter##title}",
+             }
+           />
+         </div>
+       }}
+    </div>;
+  };
+  let renderWordsJsx = () => {
+    <div>
       <header>
         {switch (possNullImg) {
          | None => React.null
@@ -40,6 +56,7 @@ let make = (~post) => {
             _to=post##fields##slug>
             {React.string(post##frontmatter##title)}
           </Link>
+          <span />
           <span className="subtitle is-size-5 is-block">
             {React.string(post##frontmatter##date)}
           </span>
@@ -54,9 +71,6 @@ let make = (~post) => {
         </Link>
       </p>
     </div>;
-  };
-  let renderWordsJsx = () => {
-    <div> {React.string("help")} </div>;
   };
 
   <div className="is-parent column is-6">
